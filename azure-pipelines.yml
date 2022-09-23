@@ -17,3 +17,6 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- bash: |
+  token=$(curl -H "Content-Type: application/json" -X POST --data '{ "client_id": "$(651A72C41FC14897994011943E4673D0)","client_secret": "$(0441d54949af025616a7fcea06770dbb0b560f918837a9db760018152ddffad3)" }' https://xray.cloud.xpand-it.com/api/v1/authenticate| tr -d '"')
+  curl -H "Content-Type: text/xml" -X POST -H "Authorization: Bearer $eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5hbnQiOiI0MjZiYzA4Yy02N2VmLTNjMjYtYWU1YS03NjczYTB1ZjIwNjkiLCJ1c2VyS2V5IjoiYW5kcmUucm9kcmlndWVzIiwiaWF0IjixNTI1ODcxODkzLCJleHAiOjE1MjU5NTgyOTMsImF1ZCI6IhMyQTI3RTY5QjBBQzRFNTM5QzE0MDE2NDM3OTlFOEU3IiwiaXNzIjoiY29tLnhwYW5kaXQueHJheSIsInN1YiI6IjMyQTI3RTY5QjBBQzRFNTM5QzE0MDE2NDM3OTlFOEU3In0.8ah2IQ9rA_zotyh_6trFgfIvhn2awdFFrOHnN2F2H7m" --data @java-junit-calc/target/surefire-reports/TEST-com.xpand.java.CalcTest.xml https://xray.cloud.xpand-it.com/api/v1/import/execution/junit?projectKey=$(QA)
